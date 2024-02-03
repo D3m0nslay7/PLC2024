@@ -25,5 +25,5 @@ r11 = zip [1..3] (map sqrt [1..2])
 
 r12 = print [1..3]
 
-main :: IO ()
+main :: IO ()r12
 main = pure ()

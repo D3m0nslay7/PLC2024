@@ -26,7 +26,7 @@ prg2 = do
 main =
   do
   putStrLn name -- like print, but only for strings
-  -- putStrLn pname3 -- Couldn't match type ...; Expected type: String; Actual type: IO ()
+  --putStrLn pname3 -- Couldn't match type ...; Expected type: String; Actual type: IO ()
   pname3 -- in Lisp: eval pname3
   myprogram; prg1; prg2 -- sequencing, like 3 lines
 
@@ -40,3 +40,7 @@ greet1 = "hello " ++ name ++ (toString 123)
 greet2 = (++) "hello " name
 -- concatenating more than 2 strings:
 greet3 = concat ["hello ", name, toString 123]
+
+--adding increment function
+inc :: Int -> Int
+inc x = x + 1

@@ -2,10 +2,7 @@
 inpFunc a b = [a..b]
 
 
-applicatorFunc inpFunc a b s =
-    if s == 's'
-    then sum (inpFunc a b)
-    else sum (inpFunc a b) `div` 5
+applicatorFunc inpFunc a b s | s == 's' = sum (inpFunc a b) | otherwise = sum (inpFunc a b) `div` 5
 
 main :: IO ()
 main = do
