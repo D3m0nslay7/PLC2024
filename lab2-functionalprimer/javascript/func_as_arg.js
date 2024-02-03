@@ -1,24 +1,42 @@
-//Create list of ints from 1 to 5, Haskell equivalent [1..5]
-function arrFunc(){
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+//Create list of ints from a to b, Haskell equivalent [a..b]
+function arrFunc(a, b) {
     let arr = [];
-    for (let i = 1; i<=5; i++) {
+    for (let i = a; i <= b; i++) {
         arr.push(i);
     }
-    return arr;    
+    return arr;
 }
 
-function applicatorFunc(inpFunc, s){
-    if(s=='s'){
-        const arr = inpFunc();        
+function applicatorFunc(inpFunc, arg, a, b) {
+    if (arg == 's') {
+        const arr = inpFunc(a, b);
+        let sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        return sum / 5;
+    }
+    else {
+        const arr = inpFunc(a, b);
         let sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
         return sum;
     }
-    else{        
-        const arr = inpFunc();
-        let sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        return sum/5;
-    }
 }
 
-let x = applicatorFunc(arrFunc, 's');
-console.log(x);
+
+
+readline.question('Input the first integer: ', a => {
+
+    readline.question('Input the second integer: ', b => {
+        readline.question('please input s if you want to divide the sum by 5 or anything else if you just want the sum of both integers: ', arg => {
+
+            let x = applicatorFunc(arrFunc, arg, parseInt(a), parseInt(b));
+            console.log(x);
+            readline.close();
+        });
+    });
+});
+
+
